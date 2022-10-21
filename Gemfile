@@ -12,6 +12,12 @@ gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
+gem "bcrypt", "~> 3.1.7"
+
+gem 'faker', '~> 1.6', '>= 1.6.6'
+
+gem 'byebug', '~> 11.1', '>= 11.1.3'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 

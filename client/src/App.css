@@ -1,38 +1,133 @@
 .App {
   text-align: center;
+  padding-bottom: 800px;
+  background-position: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.image_grid{
+  --gap: 20px;
+  --num-cols: 3;
+  --row-height: 400px;
+
+  box-sizing: border-box;
+  padding: var(--gap);
+
+  display: grid;
+  grid-template-columns: repeat(var(--num-cols), 1fr);
+  grid-auto-rows: var(--row-height);
+  gap: 400px 10px;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.image_grid2{
+  --gap: 20px;
+  --num-cols: 3;
+  --row-height: 400px;
+
+  box-sizing: border-box;
+  padding: var(--gap);
+
+  display: grid;
+  grid-template-columns: repeat(var(--num-cols), 1fr);
+  grid-auto-rows: var(--row-height);
+  gap: 500px 10px;
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.item_image{
+  width: 450px;
+  height: 300px;
+  padding: 10px;
+  border: double;
+  padding: 1px;
+  border-color: rgb(79, 18, 0);
+  border-width: 20px;
+  margin: 5px;
+  object-fit: contain;
+  background-color: tan;
 }
 
-.App-link {
-  color: #61dafb;
+.item_image2{
+  padding: 10px;
+  border: double;
+  padding: 1px;
+  border-color: rgb(79, 18, 0);
+  border-width: 40px;
+  margin: 5px;
+  object-fit: contain;
+  background-color: tan;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.item_image3{
+  width: 200px;
+  height: 100px;
+  padding: 10px;
+  border: double;
+  padding: 1px;
+  border-color: rgb(79, 18, 0);
+  border-width: 5px;
+  margin: 5px;
+  object-fit: contain;
+  background-color: tan;
 }
+
+.item_div2{
+  border: double;
+  background-color: white;
+  color: tan;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.item_div{
+  border: double;
+  background-color: rgb(0, 43, 236);
+  color: bisque;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 600px;
+}
+
+.intro{
+  font-size: 20px;
+  font-weight: bolder;
+  color: bisque;
+  text-shadow: 4px 2px 2px darkblue;
+}
+
+.intro_header{
+  font-size: 40px;
+  text-shadow: 4px 2px 2px darkblue;
+}
+
+.account{
+  color: rgb(96, 255, 244);
+  text-shadow: 4px 2px 2px darkblue;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.account1{
+  color: rgb(96, 255, 244);
+  text-shadow: 4px 2px 2px darkblue;
+  font-weight: bolder;
+  font-size: 50px;
+}
+
+.account2{
+  color: rgb(5, 43, 255);
+}
+
+.form_input{
+  text-align: center;
+  text-shadow: 1px 1px 1px darkblue;
+  font-size: 15px;
+}
+
+.errors{
+  color: red;
+  font-size: 16px;
+}
+
