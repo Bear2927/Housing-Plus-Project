@@ -44,20 +44,27 @@ function PropertyForm ({setProperties, owners, setOwners, listings, setListings}
             body: JSON.stringify(newOwner)
         }
         
-        fetch("/properties", configObj)
-                .then(res => res.json())
-                .then(property =>{
-             setProperties([...properties, property])
-                fetch("/owners", configObjOne)
+        fetch("/owners", configObjOne)
                     .then(res => res.json())
                     .then(owner => {setOwners([...owners, owner])
+            fetch("/properties", configObj)
+                    .then(res => res.json())
+                    .then(property =>{
+                    setProperties([...properties, property])
+                
                         fetch("/listings", {
                             method: "POST",
                             headers: {'Content-Type': 'application/json'},
                             body: JSON.stringify({owner_id: owner.id, property_id: property.id})
                         })
                             .then(res => res.json())
-                            .then(data => (data)) 
+                            .then(data => console.log(data))
+                                fetch("/properties") 
+                                    .then(res => res.json())
+                                    .then(properties => setProperties(properties))
+                                    fetch("/owners") 
+                                        .then(res => res.json())
+                                        .then(owners => setOwners(owners))
 
                 })
 
