@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import './App.css';
 import { BrowserRouter, Switch, Route} from "react-router-dom"
 import NavBar from "./components/NavBar";
@@ -9,11 +9,14 @@ import Signup from "./components/Signup";
 import Home from "./components/Home";
 import WishList from "./components/WishList";
 import ReviewDirectory from "./components/ReviewDirectory";
+import { PropertiesProvider } from "./context/PropertiesProvider";
+import {PropertiesContext} from "./context/PropertiesProvider";
+import './fonts/Techno.ttf';
 
-export const Context = createContext()
+// export const Context = createContext()
 
 function App() {
-   const [properties, setProperties] = useState([]);
+  let {properties, setProperties} = useContext(PropertiesContext)
    const [owners, setOwners] = useState([]);
    const [listings, setListings] = useState([]);
    const [wishList, setWishList] = useState([]);
@@ -32,11 +35,7 @@ function App() {
 
    
   
-  useEffect(() => {
-    fetch("/properties")
-      .then((res) => res.json())
-      .then((properties) => setProperties(properties));
-  }, [user]);
+  
 
   useEffect(() => {
     fetch("/owners")
@@ -98,11 +97,11 @@ function App() {
       <NavBar user={user} setUser={setUser}/>
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Home user={user}/>
           </Route>
-          <Context.Provider value={properties}>
           <Route path="/properties">
             <PropertyDirectory 
+            properties={properties}
             handleRemoveProperty={handleRemoveProperty}
             handleWishListItem={handleWishListItem}
             wishList={wishList}
@@ -128,6 +127,7 @@ function App() {
           </Route>
           <Route path="/form">
             <PropertyForm 
+            properties={properties}
             setProperties={setProperties}
             owners={owners}
             setOwners={setOwners}
@@ -135,7 +135,6 @@ function App() {
             setListings={setListings}
             />
           </Route>
-          </Context.Provider>
           <Route path="/login">
             <Login 
             setUser={setUser} 

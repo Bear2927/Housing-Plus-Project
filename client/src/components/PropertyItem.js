@@ -1,9 +1,14 @@
 import React, { useState } from "react";
+import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
 
-function PropertyItem ({property, handleRemoveProperty, handleWishListItem, wishList, handleRemoveItem, reviews, setReviews, user}) {
+function PropertyItem ({property, handleRemoveProperty, handleWishListItem, wishList, handleRemoveItem, reviews, setReviews, user, showAddReview, show}) {
 
     const [formRating, setFormRating] = useState("")
     const [formReview, setFormReview] = useState("")
+
+    
 
     function handleAddReview (){
         const newReview = {
@@ -55,23 +60,26 @@ function PropertyItem ({property, handleRemoveProperty, handleWishListItem, wish
                 <h4>Price: ${property.price} a night</h4>
                 {!wishList ? (
                     <div>
-                    <button onClick={() => handleRemoveItem(property)}>Remove from Wish List</button>
+                    <Button variant="contained" onClick={() => handleRemoveItem(property)}>Remove from Wish List</Button>
                     <h4> Owner Name: {property.owners.map(owner => owner.name).join(", ")} </h4>
-                    {property.owners.map(owner => <img key={owner.name} className="item_image3" src={owner.image_url} alt={owner.id}/>)}
+                    <Stack direction="row" spacing={2} justifyContent="center">{property.owners.map(owner => <Avatar className="item_image4" key={owner.name} src={owner.image_url} alt={owner.id} sx={{ width: 100, height: 100 }}/>)}</Stack>
                     <h4> Owner Email Address: {property.owners.map(owner => owner.email).join(", ")} </h4>
                     <h4> Owner Phone Number: {property.owners.map(owner => owner.phone_number).join(" | ")} </h4>
                 </div>
                 ) : (
                     <div>
-                    <button onClick={() => handleWishListItem(property)}>Add to Wish List</button>
-                    <button onClick={() => handleRemoveProperty(property)}>Delete</button>
-                    <form onSubmit={forceSubmit}>
+                    <Stack direction="row" spacing={1} justifyContent="center">
+                        <Button variant="contained" onClick={() => handleWishListItem(property)}>Add to Wish List</Button>
+                        <Button variant="contained" onClick={() => handleRemoveProperty(property)}>Delete</Button>
+                        <Button variant="contained" onClick={() => showAddReview()}>{show ? "Done" : "Add a Review"}</Button>
+                    </Stack>
+                    {show ? <form onSubmit={forceSubmit}>
                         <h5 >Rating</h5>
-                        <input onChange={handleUpdateRating} type="text" value={formRating} placeholder="rating..."/>
+                        <input className="form_input" onChange={handleUpdateRating} type="text" value={formRating} placeholder="rating..."/>
                         <h5 >Review</h5>
-                        <textarea onChange={handleUpdateReview} type="text" rows="6" cols="40" value={formReview} placeholder="review..."></textarea>
-                        <div><button className="form_button" type="submit">SUBMIT</button></div>
-                    </form>
+                        <textarea className="textarea" onChange={handleUpdateReview} type="text" rows="6" cols="40" value={formReview} placeholder="review..."></textarea>
+                        <div><Button variant="contained" className="form_button" type="submit">SUBMIT</Button></div>
+                    </form> : null}
                     </div>
                 )} 
                 

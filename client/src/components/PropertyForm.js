@@ -1,9 +1,11 @@
 import React, { useState, useContext} from "react";
-import { Context } from "../App";
+import {PropertiesContext} from "../context/PropertiesProvider";
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
-function PropertyForm ({setProperties, owners, setOwners, listings, setListings}) {
+function PropertyForm ({owners, setOwners, listings, setListings}) {
 
-    const properties = useContext(Context)
+    let {properties, setProperties} = useContext(PropertiesContext)
 
     const [formAddress, setFormAddress] = useState("");
     const [formImage, setFormImage] = useState("");
@@ -132,32 +134,32 @@ function PropertyForm ({setProperties, owners, setOwners, listings, setListings}
     
     return (
         <div className="form_div">
-
-            <p className="account">Add properties for rent!</p>
-            <form onSubmit={handleSubmit}>
+            <h1 className="account1">Add properties for rent</h1>
+            <form onSubmit={handleSubmit} className="form">
+                <p className="account5">Add a Property</p>
                 <h5 className="account">Address</h5>
-                <div><input className="form_input" onChange={handleUpdateAddress} type="text" value={formAddress} placeholder="property address..."/></div>
+                <div><TextField className="form_input" onChange={handleUpdateAddress} type="text" value={formAddress} placeholder="property address..."/></div>
                 <h5 className="account">Image</h5>
-                <div><input className="form_input" onChange={handleUpdateImage} type="text" value={formImage} placeholder="property image url..."/></div>
+                <div><TextField className="form_input" onChange={handleUpdateImage} type="text" value={formImage} placeholder="property image url..."/></div>
                 <h5 className="account">Bedrooms</h5>
-                <div><input className="form_input" onChange={handleUpdateBedrooms} type="text" value={formBedrooms} placeholder="property bedrooms..."/></div>
+                <div><TextField className="form_input" onChange={handleUpdateBedrooms} type="text" value={formBedrooms} placeholder="property bedrooms..."/></div>
                 <h5 className="account">Bathrooms</h5>
-                <div><input className="form_input" onChange={handleUpdateBathrooms} type="text" value={formBathrooms} placeholder="property bathrooms..."/></div>
+                <div><TextField className="form_input" onChange={handleUpdateBathrooms} type="text" value={formBathrooms} placeholder="property bathrooms..."/></div>
                 <h5 className="account">Price</h5>
-                <div><input className="form_input" onChange={handleUpdatePrice} type="text" value={formPrice} placeholder="property price..."/></div>
-                
+                <div><TextField className="form_input" onChange={handleUpdatePrice} type="text" value={formPrice} placeholder="property price..."/></div>
+            
             
 
-            <p className="account">Add the owner for this property!</p>
+            <p className="account5">Add the owner for this property</p>
             <h5 className="account">Name</h5>
-                <div><input className="form_input" onChange={handleUpdateName} type="text" value={formName} placeholder="owner name..."/></div>
+                <div><TextField className="form_input" onChange={handleUpdateName} type="text" value={formName} placeholder="owner name..."/></div>
                 <h5 className="account">Image</h5>
-                <div><input className="form_input" onChange={handleUpdateImageUrl} type="text" value={formImageUrl} placeholder="owner image url..."/></div>
+                <div><TextField className="form_input" onChange={handleUpdateImageUrl} type="text" value={formImageUrl} placeholder="owner image url..."/></div>
                 <h5 className="account">Email Address</h5>
-                <div><input className="form_input" onChange={handleUpdateEmail} type="text" value={formEmail} placeholder="owner email address..."/></div>
+                <div><TextField className="form_input" onChange={handleUpdateEmail} type="text" value={formEmail} placeholder="owner email address..."/></div>
                 <h5 className="account">Phone Number</h5>
-                <div><input className="form_input" onChange={handleUpdatePhoneNumber} type="text" value={formPhoneNumber} placeholder="owner phone number..."/></div>
-                <div><button className="form_button" type="submit">SUBMIT</button></div>
+                <div><TextField className="form_input" onChange={handleUpdatePhoneNumber} type="text" value={formPhoneNumber} placeholder="owner phone number..."/></div>
+                <div><Button variant="contained" type="submit">SUBMIT</Button></div>
             </form>
         </div>
     )

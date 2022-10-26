@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 function Login({ setUser, user }) {
   const [username, setUsername] = useState("");
@@ -31,9 +34,10 @@ function Login({ setUser, user }) {
   
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <h1 className="account1">Login</h1>
+      <form onSubmit={handleSubmit} className="form1">
           <h5 className="account">Username</h5>
-          <input
+          <TextField
             className="form_input"
             placeholder="Enter Username..."
             type="text"
@@ -43,7 +47,7 @@ function Login({ setUser, user }) {
             onChange={(e) => setUsername(e.target.value)}
           />
           <h5 className="account">Password</h5>
-          <input
+          <TextField
             className="form_input"
             placeholder="Enter Password..."
             type="password"
@@ -52,9 +56,11 @@ function Login({ setUser, user }) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button variant="fill" color="primary" type="submit">
+          <div>
+          <Button variant="contained" type="submit">
             {isLoading ? "Loading..." : "Login"}
-          </button>
+          </Button>
+          </div>
           <h5 className="errors">
             {errors}
           </h5>

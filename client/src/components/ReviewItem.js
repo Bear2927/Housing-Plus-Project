@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from '@mui/material/Button';
 
 function ReviewItem ({review, handleRemoveReview, updateReview}) {
     const [editReview, setEditReview] = useState(false)
@@ -51,10 +52,10 @@ function ReviewItem ({review, handleRemoveReview, updateReview}) {
                 <div>
                 <form onSubmit={(e) => handleSubmitReview(e)}>
                     <h5>Rating</h5>
-                    <div><input onChange={handleChangeRating} value={editedRating} type="text" placeholder="rating..."/></div>
+                    <div><input className="form_input" onChange={handleChangeRating} value={editedRating} type="text" placeholder="rating..."/></div>
                     <h5>Review</h5>
-                    <div><textarea className="review_input" rows="10" cols="50" onChange={handleChangeReview} value={editedReview} type="text" placeholder="review..."></textarea></div>
-                    <button>Submit</button>
+                    <div><textarea className="textarea" rows="10" cols="50" onChange={handleChangeReview} value={editedReview} type="text" placeholder="review..."></textarea></div>
+                    <Button variant="contained" type="submit">Submit</Button>
                 </form>
                 </div>
                 :
@@ -63,8 +64,8 @@ function ReviewItem ({review, handleRemoveReview, updateReview}) {
                 <h4>{review.review}</h4>
                 </div>
                 }
-                <button onClick={() => handleRemoveReview(review)}>Delete</button>
-                <button onClick={() => handleEdit()}>Edit</button>
+                <Button variant="contained" onClick={() => handleRemoveReview(review)}>Delete</Button>
+                <Button variant="contained" onClick={() => handleEdit()}>{editReview ? "Done" : "Edit"}</Button>
             </div>
         </div>
     )

@@ -10,7 +10,7 @@ function WishList ({wishList, handleRemoveItem}) {
         <div>
             <h1 className="account1">Properties you are possibly looking to rent</h1>
             {console.log(wishList)}
-            {(wishList.length === 0) ? (<div><img src="https://wompimages.azureedge.net/fetchimage?siteId=7736&url=https%3A%2F%2Fwww.realestateexpress.com%2Fwp-content%2Fuploads%2F2016%2F09%2Fblog-image-real-estate-listing-descriptions.jpg" alt="placeholderImage"/></div>) : (
+            {(wishList.length === 0) ? (<div><img className="image_home" src="https://wompimages.azureedge.net/fetchimage?siteId=7736&url=https%3A%2F%2Fwww.realestateexpress.com%2Fwp-content%2Fuploads%2F2016%2F09%2Fblog-image-real-estate-listing-descriptions.jpg" alt="placeholderImage"/></div>) : (
             <div className="image_grid2">
                {itemWish}
             </div>)}

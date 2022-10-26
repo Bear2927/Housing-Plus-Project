@@ -1,5 +1,10 @@
 import React from "react";
 import {Link, useHistory} from "react-router-dom";
+import Button from '@mui/material/Button';
+import AppBar from '@mui/material/AppBar';
+import Typography from '@mui/material/Typography';
+import Stack from '@mui/material/Stack';
+import Divider from '@mui/material/Divider';
 
 
 function NavBar({user, setUser}) {
@@ -10,34 +15,52 @@ function NavBar({user, setUser}) {
   function handleLogout() {
     fetch("/logout", {method: "DELETE"});
     setUser(null);
-    history.push("/Signup");
+    history.push("/signup");
   }
     
     return( 
-        <header className="navbar">
+        <header>
         {(!user) ? 
-        <div>  
-        <nav className="account2">
-          <ul className="account2">
-            <Link to="/signup" className="account2"> Signup </Link>
-          </ul>
+        <AppBar>  
+        <nav>
+            <Stack
+              direction="row"
+              divider={<Divider orientation="vertical" flexItem />}
+              spacing={2}
+              justifyContent="center"
+              padding="15px"
+            >
+            <Link to="/signup"><Button variant="contained"> Signup </Button></Link>
+          </Stack>
         </nav>
-        </div>
+        </AppBar>
          :  
-        <div>
+        <AppBar>
             <nav>
-              <ul className="account2">
-                <Link to="/" className="account2"> Home </Link>  |   
-                {(user.admin) ? <Link to="/form" className="account2"> Add Property </Link> : null}  |  
-                <Link to="/properties"  className="account2"> Properties </Link>  |
-                <Link to="/wish" className="account2"> Wish List </Link>  |
-                <Link to="/reviews" className="account2"> Reviews </Link> 
-              </ul>
-              <div>
-                <button onClick={() => handleLogout()}> Logout </button>
-              </div> 
+              <Stack
+                direction="row"
+                divider={<Divider orientation="vertical" flexItem />}
+                spacing={4}
+                justifyContent="center"
+                padding="10px"
+              >
+                <Link to="/" className="account2"><Button variant="contained"> Home </Button></Link>    
+                {(user.admin) ? <Link to="/form" className="account2"><Button variant="contained"> Add Property </Button></Link> : null}   
+                <Link to="/properties"  className="account2"><Button variant="contained"> Properties </Button></Link>  
+                <Link to="/wish" className="account2"><Button variant="contained"> Wish List </Button></Link>  
+                <Link to="/reviews" className="account2"><Button variant="contained"> Reviews </Button></Link> 
+              </Stack>
+              <Stack
+                direction="row"
+                divider={<Divider orientation="vertical" flexItem />}
+                spacing={4}
+                justifyContent="center"
+                padding="10px"
+              >
+                <Button variant="contained" onClick={() => handleLogout()}> Logout </Button>
+              </Stack> 
             </nav>
-        </div>
+        </AppBar>
         }
       </header>
       )
