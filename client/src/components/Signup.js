@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {Link, useHistory} from "react-router-dom";
 import Home from "./Home";
 import Button from '@mui/material/Button';
@@ -12,6 +12,15 @@ function Signup({ setUser, user }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   let history = useHistory();
+
+  useEffect(() => {
+    fetch("/me")
+    .then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -43,9 +52,10 @@ function Signup({ setUser, user }) {
   function handleChangeAdmin () {
     setAdmin(!admin)
   }
-  console.log(admin)
 
   if (user) return history.push("/")
+
+  console.log(history)
   
   return (
     <div>

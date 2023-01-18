@@ -15,7 +15,7 @@ function NavBar({user, setUser}) {
   function handleLogout() {
     fetch("/logout", {method: "DELETE"});
     setUser(null);
-    history.push("/signup");
+    history.push("/");
   }
     
     return( 
@@ -30,14 +30,14 @@ function NavBar({user, setUser}) {
               justifyContent="center"
               padding="15px"
             >
-            <Link to="/signup"><Button variant="contained"> Signup </Button></Link>
+            {/* <Link to="/signup"><Button variant="contained"> Signup </Button></Link> */}
           </Stack>
         </nav>
         </AppBar>
          :  
         <AppBar>
             <nav>
-              <Stack
+              <Stack 
                 direction="row"
                 divider={<Divider orientation="vertical" flexItem />}
                 spacing={4}

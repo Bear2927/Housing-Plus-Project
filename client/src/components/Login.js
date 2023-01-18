@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import Box from '@mui/material/Box';
+import React, { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
@@ -10,6 +9,15 @@ function Login({ setUser, user }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
     let history = useHistory();
+
+    useEffect(() => {
+      fetch("/me")
+      .then((r) => {
+        if (r.ok) {
+          r.json().then((user) => setUser(user));
+        }
+      });
+    }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -61,6 +69,7 @@ function Login({ setUser, user }) {
             {isLoading ? "Loading..." : "Login"}
           </Button>
           </div>
+          <ul className="account"> already have an account? <Button variant="contained"><Link className="account2" to="/">Signup</Link></Button></ul>
           <h5 className="errors">
             {errors}
           </h5>

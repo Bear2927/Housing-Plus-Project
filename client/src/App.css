@@ -58,7 +58,6 @@
   grid-template-columns: repeat(var(--num-cols), 1fr);
   grid-auto-rows: var(--row-height);
   gap: 275px 10px;
-
 }
 
 .image_grid2{
@@ -73,7 +72,6 @@
   grid-template-columns: repeat(var(--num-cols), 1fr);
   grid-auto-rows: var(--row-height);
   gap: 600px 10px;
-
 }
 
 .item_image{
@@ -128,7 +126,7 @@
   padding-bottom: 10px;
   padding-left: 10px;
   padding-right: 10px;
-  font-family: "Bill";
+  font-family: monospace;
   text-shadow: 2px 1px 1px rgb(239, 166, 255);
   font-size: 20px;
 }
@@ -141,7 +139,7 @@
   padding-left: 10px;
   padding-right: 10px;
   width: 600px;
-  font-family: "Bill";
+  font-family: monospace;
 }
 
 .intro{
@@ -180,6 +178,14 @@
   font-family: "Prisma";
 }
 
+.account6{
+  color: rgb(70, 109, 252);
+  text-shadow: 4px 2px 2px rgb(226, 138, 255);
+  font-weight: bolder;
+  font-size: 40px;
+  font-family: "Techno";
+}
+
 .form_input{
   text-align: center;
   padding: 10px;
@@ -215,7 +221,7 @@
   top: 50%;
   right: 32px;
   font-size: 3rem;
-  color: black;
+  color: rgb(0, 26, 255);
   z-index: 10;
   cursor: pointer;
   user-select: none;
@@ -226,7 +232,7 @@
   top: 50%;
   left: 32px;
   font-size: 3rem;
-  color: black;
+  color: rgb(0, 26, 255);
   z-index: 10;
   cursor: pointer;
   user-select: none;
@@ -331,6 +337,4 @@
     rgba(0, 21, 255, 0.5);
     margin-top: 50px;
 }
-
-
 

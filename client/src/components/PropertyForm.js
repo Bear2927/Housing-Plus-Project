@@ -1,11 +1,9 @@
-import React, { useState, useContext} from "react";
-import {PropertiesContext} from "../context/PropertiesProvider";
+import React, { useState, useEffect} from "react";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
-function PropertyForm ({owners, setOwners, listings, setListings}) {
+function PropertyForm ({properties, setProperties, owners, setOwners, setListings}) {
 
-    let {properties, setProperties} = useContext(PropertiesContext)
 
     const [formAddress, setFormAddress] = useState("");
     const [formImage, setFormImage] = useState("");
@@ -16,6 +14,24 @@ function PropertyForm ({owners, setOwners, listings, setListings}) {
     const [formImageUrl, setFormImageUrl] = useState("");
     const [formEmail, setFormEmail] = useState("");
     const [formPhoneNumber, setFormPhoneNumber] = useState("")
+
+    useEffect(() => {
+        fetch("/owners")
+          .then((res) => res.json())
+          .then((owners) => setOwners(owners));
+      }, []);
+
+      useEffect(() => {
+        fetch("/listings")
+          .then((res) => res.json())
+          .then((listings) => setListings(listings));
+      }, []);
+
+      useEffect(() => {
+        fetch("/properties")
+          .then((res) => res.json())
+          .then((properties) => setProperties(properties));
+      }, []);
 
     
     function handleAddPropertyAndOwner(){
@@ -53,7 +69,6 @@ function PropertyForm ({owners, setOwners, listings, setListings}) {
                     .then(res => res.json())
                     .then(property =>{
                     setProperties([...properties, property])
-                
                         fetch("/listings", {
                             method: "POST",
                             headers: {'Content-Type': 'application/json'},
@@ -67,17 +82,9 @@ function PropertyForm ({owners, setOwners, listings, setListings}) {
                                     fetch("/owners") 
                                         .then(res => res.json())
                                         .then(owners => setOwners(owners))
-
                 })
-
-       
         });
 
-        
-
-       
-        
-        
         setFormImage("")
         setFormAddress("")
         setFormBedrooms("")

@@ -1,32 +1,55 @@
-import React, { useContext, useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropertyItem from "./PropertyItem";
-import {PropertiesContext} from "../context/PropertiesProvider";
 
 
-function PropertyDirectory ({handleRemoveProperty, handleWishListItem, wishList, reviews, setReviews, user}) {
+function PropertyDirectory ({properties, setProperties, handleWishListItem, wishList, reviews, setReviews, user, setOwners}) {
 
     const [show, setShow] = useState(false)
+    const [searchTerm, setSearchTerm] = useState("")
 
-    let {properties, setProperties} = useContext(PropertiesContext)
+    useEffect(() => {
+        fetch("/owners")
+          .then((res) => res.json())
+          .then((owners) => setOwners(owners));
+      }, []);
 
-    function showAddReview() {
-        setShow(!show)
+      useEffect(() => {
+        fetch("/reviews")
+          .then((res) => res.json())
+          .then((reviews) => setReviews(reviews));
+      }, []);
+
+      useEffect(() => {
+        fetch("/properties")
+          .then((res) => res.json())
+          .then((properties) => setProperties(properties));
+      }, []);
+
+    let filteredProperties = properties.filter(property => {
+      return property.address.toLowerCase().includes(searchTerm.toLowerCase())
+    })
+
+    function handleFilter(e) {
+        setSearchTerm(e.target.value)
     }
+
     
 
     return(
         <div>
+            <h1 className="account6">Search Properties</h1>
+            <input className="form_input" type="text" placeholder="Search Property..." onChange={handleFilter}></input>
             <h1 className="account1"> Properties </h1>
-            
             <div className={show ? "image_grid2" : "image_grid1"}>
-                {properties.map(property => (
+                {filteredProperties.map(property => (
                 <PropertyItem 
                 key={property.id} 
                 property={property} 
-                handleRemoveProperty={handleRemoveProperty}
+                properties={properties}
+                setProperties={setProperties}
                 handleWishListItem={handleWishListItem}
-                showAddReview={showAddReview}
                 show={show}
+                setShow={setShow}
                 wishList={wishList}
                 reviews={reviews}
                 setReviews={setReviews}

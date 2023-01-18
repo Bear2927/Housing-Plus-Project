@@ -1,7 +1,13 @@
-import React from "react";
+import React, {useEffect} from "react";
 import ReviewItem from "./ReviewItem"
 
-function ReviewDirectory ({reviews, handleRemoveReview, updateReview}) {
+function ReviewDirectory ({reviews, handleRemoveReview, updateReview, setReviews}) {
+
+    useEffect(() => {
+        fetch("/reviews")
+          .then((res) => res.json())
+          .then((reviews) => setReviews(reviews));
+      }, []);
 
     return(
         <div>

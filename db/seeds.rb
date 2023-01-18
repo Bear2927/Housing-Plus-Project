@@ -1,12 +1,12 @@
 puts "Seeding Data..."
 
 
-p1 = Property.create(address: "18420 Hastings Way, Porter Ranch, CA 91326", image_url: "https://www.gannett-cdn.com/presto/2021/03/02/PNDN/f54f2159-946d-4592-9d83-c174ec40199c-GSH_Modern_Arch_0307.jpg?width=660&height=400&fit=crop&format=pjpg&auto=webp", bedrooms: "15 bd", bathrooms: "16 ba", price: 250)
-p2 = Property.create(address: "1445 President St, Brooklyn, NY 11213", image_url: "https://www.idesignarch.com/wp-content/uploads/Contemporary-Brooklyn-Brownstone_2.jpg", bedrooms: "10 bd", bathrooms: "12 ba", price: 350)
-p3 = Property.create(address: "233 Eastern Ave SE, Grand Rapids, MI 49503", image_url: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/imagereader-3-1550604185.jpg", bedrooms: "8 bd", bathrooms: "9 ba", price: 325)
-p4 = Property.create(address: "30 Shay Pl, Tequesta, FL 33469", image_url: "https://homesoftherich.net/wp-content/uploads/2019/03/Screen-Shot-2019-03-25-at-2.19.10-PM.png", bedrooms: "9 bd", bathrooms: "11 ba", price: 250)
-p5 = Property.create(address: "1905 Mirabeau St, Austin, TX 78727", image_url: "https://photos.zillowstatic.com/fp/dc4ee6121b69c935d20e2961726d0a8b-p_e.jpg", bedrooms: "7 bd", bathrooms: "9 ba", price: 225)
-p6 = Property.create(address: "101 Jungle Rd, Palm Beach, FL 33480", image_url: "https://luxury-houses.net/wp-content/uploads/2020/06/Modern-Cove-in-Palm-Beach-Florida-by-Affiniti-Architects-20.jpg", bedrooms: "18 bd", bathrooms: "19 ba", price: 450)
+p1 = Property.create(address: "18420 Hastings Way, Porter Ranch, CA 91326", image_url: "https://www.gannett-cdn.com/presto/2021/03/02/PNDN/f54f2159-946d-4592-9d83-c174ec40199c-GSH_Modern_Arch_0307.jpg?width=660&height=400&fit=crop&format=pjpg&auto=webp", bedrooms: "15", bathrooms: "16", price: 250)
+p2 = Property.create(address: "1445 President St, Brooklyn, NY 11213", image_url: "https://www.idesignarch.com/wp-content/uploads/Contemporary-Brooklyn-Brownstone_2.jpg", bedrooms: "10", bathrooms: "12", price: 350)
+p3 = Property.create(address: "233 Eastern Ave SE, Grand Rapids, MI 49503", image_url: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/imagereader-3-1550604185.jpg", bedrooms: "8", bathrooms: "9", price: 325)
+p4 = Property.create(address: "30 Shay Pl, Tequesta, FL 33469", image_url: "https://homesoftherich.net/wp-content/uploads/2019/03/Screen-Shot-2019-03-25-at-2.19.10-PM.png", bedrooms: "9", bathrooms: "11", price: 250)
+p5 = Property.create(address: "1905 Mirabeau St, Austin, TX 78727", image_url: "https://photos.zillowstatic.com/fp/dc4ee6121b69c935d20e2961726d0a8b-p_e.jpg", bedrooms: "7", bathrooms: "9", price: 225)
+p6 = Property.create(address: "101 Jungle Rd, Palm Beach, FL 33480", image_url: "https://luxury-houses.net/wp-content/uploads/2020/06/Modern-Cove-in-Palm-Beach-Florida-by-Affiniti-Architects-20.jpg", bedrooms: "18", bathrooms: "19", price: 450)
 
 
 o1 = Owner.create(name: "Barrett Hiltabrand", email: "BarrettHiltabrand@gmail.com", phone_number: "713-516-5979", image_url: "https://pbs.twimg.com/profile_images/1425997536578449408/wqa0JqsM_400x400.jpg")

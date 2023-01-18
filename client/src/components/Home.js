@@ -1,28 +1,28 @@
-import React, {useState, useContext} from "react";
-import { useHistory } from "react-router-dom";
-import {PropertiesContext} from "../context/PropertiesProvider";
+import React, {useState, useEffect} from "react";
 import {FaArrowAltCircleRight, FaArrowAltCircleLeft} from "react-icons/fa";
 
-function Home ({user}) {
-    let {properties, setProperties} = useContext(PropertiesContext)
-    let history = useHistory();
+function Home ({properties, setProperties}) {
 
     const [current, setCurrent] = useState(0)
     const length = properties.length
+
+    useEffect(() => {
+        fetch("/properties")
+          .then((res) => res.json())
+          .then((properties) => setProperties(properties));
+      }, []);
 
     function nextSlide() {
         setCurrent(current === length - 1 ? 0 : current + 1)
     };
 
     function prevSlide() {
-        setCurrent(current === 0 ? length - 1: current - 1)
+        setCurrent(current === 0 ? length - 1 : current - 1)
     }
 
-    if(!Array.isArray(properties) || properties.length <= 0) {
+    if (!Array.isArray(properties) || properties.length <= 0) {
         return null;
     }
-
-    if (!user) return history.push("/signup")
 
     return(
         <div className="homepage">

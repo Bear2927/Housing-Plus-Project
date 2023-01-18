@@ -3,10 +3,12 @@ import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 
-function PropertyItem ({property, handleRemoveProperty, handleWishListItem, wishList, handleRemoveItem, reviews, setReviews, user, showAddReview, show}) {
+function PropertyItem ({property, properties, setProperties, handleWishListItem, wishList, handleRemoveItem, reviews, setReviews, user, show, setShow}) {
 
+    
     const [formRating, setFormRating] = useState("")
     const [formReview, setFormReview] = useState("")
+    const [showOne, setShowOne] = useState(false)
 
     
 
@@ -49,14 +51,27 @@ function PropertyItem ({property, handleRemoveProperty, handleWishListItem, wish
         handleAddReview()
     }
 
+    function showAddReview() {
+        setShow(!showOne)
+        setShowOne(!show)
+    }
+
+    function handleRemoveProperty(property){
+
+        fetch(`/properties/${property.id}`, {method: "DELETE"})
+        
+        let newProperties = properties.filter(p => p.id !== property.id)
+        setProperties(newProperties)
+    
+    }
 
     return(
         <div>
             <img className="item_image" src={property.image_url} alt={property.id} />
             <div className="item_div2">
                 <h3>Address: {property.address}</h3>
-                <h4>Beds: {property.bedrooms}</h4>
-                <h4>Baths: {property.bathrooms}</h4>
+                <h4>Beds: {property.bedrooms} bd</h4>
+                <h4>Baths: {property.bathrooms} ba</h4>
                 <h4>Price: ${property.price} a night</h4>
                 {!wishList ? (
                     <div>
@@ -71,9 +86,9 @@ function PropertyItem ({property, handleRemoveProperty, handleWishListItem, wish
                     <Stack direction="row" spacing={1} justifyContent="center">
                         <Button variant="contained" onClick={() => handleWishListItem(property)}>Add to Wish List</Button>
                         <Button variant="contained" onClick={() => handleRemoveProperty(property)}>Delete</Button>
-                        <Button variant="contained" onClick={() => showAddReview()}>{show ? "Done" : "Add a Review"}</Button>
+                        <Button variant="contained" onClick={() => showAddReview()}>{showOne ? "Done" : "Add a Review"}</Button>
                     </Stack>
-                    {show ? <form onSubmit={forceSubmit}>
+                    {showOne ? <form onSubmit={forceSubmit}>
                         <h5 >Rating</h5>
                         <input className="form_input" onChange={handleUpdateRating} type="text" value={formRating} placeholder="rating..."/>
                         <h5 >Review</h5>
