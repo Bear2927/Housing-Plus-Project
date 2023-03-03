@@ -15,7 +15,7 @@ function NavBar({user, setUser}) {
   function handleLogout() {
     fetch("/logout", {method: "DELETE"});
     setUser(null);
-    history.push("/");
+    history.push("/login");
   }
     
     return( 
@@ -41,7 +41,7 @@ function NavBar({user, setUser}) {
                 direction="row"
                 divider={<Divider orientation="vertical" flexItem />}
                 spacing={4}
-                justifyContent="center"
+                justifyContent="left"
                 padding="10px"
               >
                 <Link to="/" className="account2"><Button variant="contained"> Home </Button></Link>    
@@ -50,12 +50,16 @@ function NavBar({user, setUser}) {
                 <Link to="/wish" className="account2"><Button variant="contained"> Wish List </Button></Link>  
                 <Link to="/reviews" className="account2"><Button variant="contained"> Reviews </Button></Link> 
               </Stack>
+              <div></div>
+            </nav>
+            <nav>
               <Stack
                 direction="row"
                 divider={<Divider orientation="vertical" flexItem />}
                 spacing={4}
-                justifyContent="center"
+                justifyContent="right"
                 padding="10px"
+                marginTop={-7}
               >
                 <Button variant="contained" onClick={() => handleLogout()}> Logout </Button>
               </Stack> 

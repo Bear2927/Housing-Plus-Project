@@ -21,6 +21,15 @@ function App() {
    const [reviews, setReviews] = useState([]);
    const [user, setUser] = useState(null)
 
+   useEffect(() => {
+    fetch("/me")
+    .then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+
   function handleRemoveReview(review){
 
     fetch(`/reviews/${review.id}`, {method: "DELETE"})

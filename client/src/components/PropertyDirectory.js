@@ -37,9 +37,8 @@ function PropertyDirectory ({properties, setProperties, handleWishListItem, wish
 
     return(
         <div>
-            <h1 className="account6">Search Properties</h1>
-            <input className="form_input" type="text" placeholder="Search Property..." onChange={handleFilter}></input>
             <h1 className="account1"> Properties </h1>
+            <input className="form_input" type="text" placeholder="Search Property..." onChange={handleFilter}></input>
             <div className={show ? "image_grid2" : "image_grid1"}>
                 {filteredProperties.map(property => (
                 <PropertyItem 

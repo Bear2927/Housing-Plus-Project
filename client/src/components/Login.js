@@ -10,14 +10,7 @@ function Login({ setUser, user }) {
   const [isLoading, setIsLoading] = useState(false);
     let history = useHistory();
 
-    useEffect(() => {
-      fetch("/me")
-      .then((r) => {
-        if (r.ok) {
-          r.json().then((user) => setUser(user));
-        }
-      });
-    }, []);
+    
 
   function handleSubmit(e) {
     e.preventDefault();
