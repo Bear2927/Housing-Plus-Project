@@ -90,9 +90,9 @@ function PropertyItem ({property, properties, setProperties, handleWishListItem,
                     </Stack>
                     {showOne ? <form onSubmit={forceSubmit}>
                         <h5 >Rating</h5>
-                        <input className="form_input" onChange={handleUpdateRating} type="text" value={formRating} placeholder="rating..."/>
+                        <input className="form_input" onChange={handleUpdateRating} type="text" value={formRating} placeholder="Rate this property..."/>
                         <h5 >Review</h5>
-                        <textarea className="textarea" onChange={handleUpdateReview} type="text" rows="6" cols="40" value={formReview} placeholder="review..."></textarea>
+                        <textarea className="textarea" onChange={handleUpdateReview} type="text" rows="6" cols="40" value={formReview} placeholder="Write a review..."></textarea>
                         <div><Button variant="contained" className="form_button" type="submit">SUBMIT</Button></div>
                     </form> : null}
                     </div>
